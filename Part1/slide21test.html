@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+function hello4(err, out) {
+  hello = out;
+
+}
+
+function tryHello4(a) {
+  let returnValue = 'returnValue';
+  let  valuee= 'callbackValue';
+  a(null, valuee);
+  return returnValue;
+}
+console.log(tryHello4(hello4)); // print returnValue
+console.log(hello); // print callbackValue
+
+/* pattern of this 
+    ตอนแรก hello ไม่ถือว่ามีอยู่ใน doc ด้วยซ้ำ  เพราะมันรับค่ามาจาก พารามิเตอร์ คือ out  
+    แต่เมื่อเรามีการประกาศฟังชั่น  hello จะวิ่งไปรับค่าจาก out ทันที ทันใดนั้น hello จะมีค่าตาม out
+    หรือ จะให้มันวิ่งไปรับค่าอีกฟังชั่นนึงที่เตรียมไว้ให้มันก็ได้  เช่น
+      สร้างฟังชั่น ชื่อ tryhello4 ที่มีพารามิเตอร์เป็นฟังชั่น
+     
+    */
+    </script>
+</body>
+</html>

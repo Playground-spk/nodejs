@@ -7,21 +7,17 @@
 </head>
 <body>
     <script>
-function addSync(a, b) {
-  return a + b;
-}
-let sum = addSync(1,2);
-
-function add(a, b, callbackFunction) {
-  callbackFunction( null, a + b );
+        function add(a, b, callbackFunction) {
+  callbackFunction( null, a - b );
+  return typeof this;
 }
 let sum2;
-add(1, 2, (err, returnValue) => {
+let result = add(2, 2, function(err, returnValue){
   sum2 = returnValue;
 });
-
-console.log(sum);
-console.log(sum2)
+console.log(sum2);
+console.log(result);
+console.log(typeof(result))
 
     </script>
 </body>
