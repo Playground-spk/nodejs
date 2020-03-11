@@ -14,18 +14,52 @@ function hello4(err, out) {
 
 function tryHello4(a) {
   let returnValue = 'returnValue';
-  let  valuee= 'callbackValue';
-  a(null, valuee);
+  let  value= 'นี่คือผลลัพธ์จากการlogHello';
+  a(null, value);
   return returnValue;
 }
 console.log(tryHello4(hello4)); // print returnValue
 console.log(hello); // print callbackValue
 
 /* pattern of this 
-    ตอนแรก hello ไม่ถือว่ามีอยู่ใน doc ด้วยซ้ำ  เพราะมันรับค่ามาจาก พารามิเตอร์ คือ out  
-    แต่เมื่อเรามีการประกาศฟังชั่น  hello จะวิ่งไปรับค่าจาก out ทันที ทันใดนั้น hello จะมีค่าตาม out
+    ตอนแรก hello ถือว่ามีค่าอยู่ใน doc ด้วยซ้ำ  เพราะมันรับค่ามาจาก พารามิเตอร์ คือ out  
+    แต่เมื่อเรามีการประกาศฟังชั่น hello4ขึ้น hello จะวิ่งไปรับค่าจาก out ทันที ทันใดนั้น hello จะมีค่าตาม out
     หรือ จะให้มันวิ่งไปรับค่าอีกฟังชั่นนึงที่เตรียมไว้ให้มันก็ได้  เช่น
-      สร้างฟังชั่น ชื่อ tryhello4 ที่มีพารามิเตอร์เป็นฟังชั่น
+      สร้างฟังชั่น ชื่อ tryhello4 ที่มีพารามิเตอร์รูปแบบเพื่อรองรับการเข้ามาของฟันชั่นโดยเฉพาะ จะขอเรียกในที่นี้ว่า พาราฟังชั่น
+      กำหนดให้พาราฟังชั่น ของtryhello4 มีพารามิเตอร์ที่รับค่าจากตัวแปรในฟังชั่น นั้นๆอีกทีนึง   คราวนี้ hello ในฟังชั่น hello4
+      จะมีค่าเท่ากับ ตัวแปรใน tryhello4 ทันที ที่มีการประกาศ ฟังชั่น tryhello4(hello4)ฟ
+- - - - - -- - - - - - -  - - - - - - - - - - - - - - -- - - - - - - -  --  - - - - - - - - -- - - - - - - -  --
+      tryhello4 มี คอลแบกฟังชั่นคือ  a
+
+      callbackfuntion a มี พารามิเตอร์ เป็น null, valuee  
+
+      เมื่อเราจับ ฟังชั่น hello4 ใส่ เข้ามาเป็น callbackfuntion ของ tryhello4แล้ว  
+      hello4(err, out)
+           a(null, value)
+      จะเกิดการแทนค่า ในฟังชั่นทันที   a = hello  (err = null, out = value)
+      จะกลายเป็น   จาก 
+
+      hello4(err, out) {
+  hello = out;
+
+}
+
+tryHello4(a) {
+  let  value= 'นี่คือผลลัพธ์จากการlogHello';
+  a(null, value);
+}
+
+tryhello4(hello4){
+    let value = 'นี่คือผลลัพธ์จากการlogHello'
+    hello4(null, value){
+        hello = value
+    }
+}
+
+******** เท่ากับว่า  hello วิ่งไปรับค่าจาก value  เราจะได้ตัวแปล hello  ที่มีค่า hello = 'นี่คือผลลัพธ์จากการlogHello'
+ ทันทีที่เรา นำ hello4 ไปใส่ใน callbackfuntion ของ funtion tryhello4
+
+      
      
     */
     </script>
