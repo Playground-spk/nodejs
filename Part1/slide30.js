@@ -15,6 +15,6 @@ function writeMessage(dat){
     });
   });
 }
-writeMessage("test in the world").then(function(){
+writeMessage("test in the world").then(readMessage).then(function(){
  console.log('success');
-});
+}).catch()

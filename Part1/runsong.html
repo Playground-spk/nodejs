@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function setTimeoutAndLog(input, time) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      console.log(input)
+      resolve(input + " from resolve")
+    }, time);
+  })
+}
+
+async function runSong() {
+  await setTimeoutAndLog('a', 650)
+  await setTimeoutAndLog('b', 650)
+  await setTimeoutAndLog('c', 650)
+  await setTimeoutAndLog('d', 650)
+  await setTimeoutAndLog('e', 650)
+  await setTimeoutAndLog('f', 650)
+  await setTimeoutAndLog('g', 650)
+  await setTimeoutAndLog('h', 1000)
+  await setTimeoutAndLog('i', 650)
+  await setTimeoutAndLog('j', 650)
+  await setTimeoutAndLog('k', 650)
+  await setTimeoutAndLog('l', 650)
+  await setTimeoutAndLog('and', 200)
+  await setTimeoutAndLog('m', 200)
+  await setTimeoutAndLog('n', 200)
+  await setTimeoutAndLog('o', 200)
+  await setTimeoutAndLog('p', 200)
+  await setTimeoutAndLog('q', 1000)
+  await setTimeoutAndLog('r', 650)
+  await setTimeoutAndLog('s', 650)
+  await setTimeoutAndLog('t', 1000)
+  await setTimeoutAndLog('u', 650)
+  await setTimeoutAndLog('v', 650)
+  await setTimeoutAndLog('w', 1000)
+  await setTimeoutAndLog('x', 650)
+  await setTimeoutAndLog('y', 1000)
+  await setTimeoutAndLog('and', 650)
+  await setTimeoutAndLog('z', 650)
+}
+
+runSong()
+    </script>
+</body>
+</html>
