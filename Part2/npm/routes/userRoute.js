@@ -1,21 +1,21 @@
 const express = require("express");
 const rounter = express.Router();
 
-const userlist = [
+let userlist = [
   {
-    id: "1",
+    id: 1,
     name: "Supakon",
-    age: "18"
+    age: 18
   },
   {
-    id: "2",
+    id: 2,
     name: "kalyssa",
-    age: "17"
+    age: 17
   },
   {
-    id: "3",
+    id: 3,
     name: "janeji",
-    age: "20"
+    age: 20
   }
 ];
 
@@ -33,13 +33,16 @@ rounter.post("/add", function(req, res) {
   res.send(newUser);
 });
 
-rounter.delete("/del", function(req, res) {
-  let checkId = req.query.id;
-  let userdelete = userlist.filter(function(item) {
-    return item.id == req.query.id;
+rounter.delete("/del/:id", function(req, res) {
+  //let checkId = req.params.id;
+  whodelete = userlist.filter(function(item) {
+    return item.id == Number(req.params.id);
   });
-  console.log(userdelete);
-  res.send(userdelete);
+  userlist = userlist.filter(function(item) {
+    return item.id !== Number(req.params.id);
+  });
+
+  res.send(whodelete);
 });
 
 function newId() {
