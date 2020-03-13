@@ -1,10 +1,17 @@
 function setTimeoutAndLog(input){
     return new Promise(function(fullfill, reject){
         setTimeout(function(){
-            fullfill(console.log(input))
+            fullfill(input)
         },1000)
 
     })
  };
 
-setTimeoutAndLog("a").then(setTimeoutAndLog("b")).then(setTimeoutAndLog("c")).then(setTimeoutAndLog("d"));
+setTimeoutAndLog("a").then(function(input){console.log(input); return setTimeoutAndLog("b")})
+.then(function(input){console.log(input); return setTimeoutAndLog("c")})
+.then(function(input){console.log(input); return setTimeoutAndLog("d")})
+.then(function(alphabet){console.log(alphabet)})
+
+
+
+

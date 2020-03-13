@@ -1,7 +1,4 @@
-let ob = {
-    name : "tae",
-    age : 19,
-}
+
 
 
 function hello(callback){

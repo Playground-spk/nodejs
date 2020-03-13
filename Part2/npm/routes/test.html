@@ -1,0 +1,36 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            var heroes = [{
+                    name: "Batman",
+                    franchise: "DC"
+                },
+                {
+                    name: "Ironman",
+                    franchise: "Marvel"
+                },
+                {
+                    name: "Thor",
+                    franchise: "Marvel"
+                },
+                {
+                    name: "“Superman”",
+                    franchise: "“DC”"
+                }
+            ];
+
+            var marvelHeroes = heroes.filter(function (hero) {
+                return hero.franchise == "Marvel";
+            });
+        </script>
+    </body>
+
+    </html>
