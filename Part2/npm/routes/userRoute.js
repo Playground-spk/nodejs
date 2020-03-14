@@ -45,6 +45,22 @@ rounter.delete("/del/:id", function(req, res) {
   res.send(whodelete);
 });
 
+rounter.put("/update/:id", function(req, res) {
+  let change;
+  userlist = userlist.map(user => {
+    if (user.id == Number(req.params.id)) {
+      return (change = {
+        id: Number(user.id),
+        name: String(req.body.name),
+        age: String(req.body.age)
+      });
+    } else {
+      return user;
+    }
+  });
+  res.send(change);
+});
+
 function newId() {
   return userlist.length + 1;
 }
